@@ -5,7 +5,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <Configurations>Debug;Release;Docker</Configurations>
     <LangVersion>latest</LangVersion>
-    <Product>Kortros</Product>
+    <Product>insuranceGoSmoke</Product>
     <Platforms>AnyCPU</Platforms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<ImplicitUsings>enable</ImplicitUsings>
