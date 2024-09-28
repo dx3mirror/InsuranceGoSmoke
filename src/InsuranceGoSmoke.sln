@@ -119,6 +119,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceGoSmoke.Security.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceGoSmoke.Security.Public.Hosts.Api", "Security\Hosts\Public\InsuranceGoSmoke.Security.Public.Hosts.Api.csproj", "{6E443C7D-E39D-4069-83D5-41AD30B82672}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PersonalAccount", "PersonalAccount", "{46CE350F-5F08-40C1-ADFB-3E283BA1D253}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{21479B44-94EA-4B9B-88D8-DCEE43FD77DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceGoSmoke.PersonalAccount.Domain", "PersonalAccount\Domain\InsuranceGoSmoke.PersonalAccount.Domain\InsuranceGoSmoke.PersonalAccount.Domain.csproj", "{CF842D2A-D05E-4A49-921C-A655FDF98CDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -282,6 +288,12 @@ Global
 		{6E443C7D-E39D-4069-83D5-41AD30B82672}.Docker|Any CPU.Build.0 = Docker|Any CPU
 		{6E443C7D-E39D-4069-83D5-41AD30B82672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E443C7D-E39D-4069-83D5-41AD30B82672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Docker|Any CPU.ActiveCfg = Docker|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Docker|Any CPU.Build.0 = Docker|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -339,6 +351,8 @@ Global
 		{C2AE1D63-0035-4162-80BA-366DE78D53B4} = {827CC1A9-325B-4A61-968C-3E1D44E5FF6B}
 		{E12FD33B-4A47-4C74-9215-5C0BB5AF705D} = {C2AE1D63-0035-4162-80BA-366DE78D53B4}
 		{6E443C7D-E39D-4069-83D5-41AD30B82672} = {0182EB60-3DF7-4E4D-BCE0-8B1E67BE5C0D}
+		{21479B44-94EA-4B9B-88D8-DCEE43FD77DC} = {46CE350F-5F08-40C1-ADFB-3E283BA1D253}
+		{CF842D2A-D05E-4A49-921C-A655FDF98CDF} = {21479B44-94EA-4B9B-88D8-DCEE43FD77DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8F57603-E8B4-4A7F-8798-E66A3ADACA24}

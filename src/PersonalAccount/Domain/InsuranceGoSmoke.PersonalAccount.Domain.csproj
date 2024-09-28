@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.PersonalAccount.Domain</Title>
+    <PackageDescription>Доменные компоненты</PackageDescription>
+    <Description>Доменные компоненты</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+
+</Project>
