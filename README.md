@@ -61,11 +61,11 @@ Solution делится на следующий части:
 9. Данные `Client secret` необходимо прописать во всех `appsettings.Development.json` проекта `backend`. Пример:
 ```
     "Keycloak": {
-        "Authority": "http://localhost:8090/realms/kortros",
-        "Realm": "kortros",
-        "ClientId": "kortros",
+        "Authority": "http://localhost:8090/realms/insuranceGoSmoke",
+        "Realm": "insuranceGoSmoke",
+        "ClientId": "insuranceGoSmoke",
         "ClientUuid": "3ac3b9a6-c1ad-4d68-ae19-4071c1e5d48c",
-        "ClientSecret": "CWexDUgylZQtRiqkGyd6SUUCgtcieiMV", // secret из realm  client 
+        "ClientSecret": "CWexDUgylZQtRiqkGyd6SUUCgtcieiMV", // secret из insuranceGoSmoke realm insuranceGoSmoke client 
         "MetadataAddress": "http://localhost:8090/realms/insuranceGoSmoke/.well-known/openid-configuration",
         "ApiAdminBaseUrl": "http://localhost:8090",
         "ApiClientId": "admin-cli",
