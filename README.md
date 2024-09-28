@@ -39,3 +39,37 @@ Solution делится на следующий части:
 - `Factories`: фабрики
 - `StateMachines`: машины-состояний
 - и т.д.
+
+- redis: `localhost:6379 пароль: pa55w0rd`
+- postgres: `postgres:5432 postgres/postgres`
+- pgadmin: `localhos:5050`
+- keycloak: `localhos:8090 admin/admin`
+- opensearch-dashboards: `localhos:5601`
+- grafana: `localhost:3050 admin/P@ssw0rd`
+- jaeger: `localhost:16686`
+
+### Настройка Keycloak
+1. Перейти по адресу http://localhost:8090/
+2. Нажать на `Administration Console`
+3. Ввести логин/пароль
+4. Перейти в `Clients`, выбрать `admin-cli`, убедиться что настройки аутентификации и авторизации включены ![Realm](./documents/readme/realm.png) Если нет - включить. 
+5. Перейти на вкладку `Credentials`, скопировать `Client secret`.
+6. Перейти на вкладку `Service accounts roles`, если в списке нету роли `admin`, то нажать `Assign role` и выбрать `admin`.
+4. Выбрать realm: insuranceGoSmoke Если же он отсутствует, то необходимо создать realm и при создании импортировать файл из папки `./localhost/keycloak/import/realm-export.json`
+7. Перейти в `Clients`, выбрать `insuranceGoSmoke`.
+8. Перейти на вкладку `Credentials`, сгенерировать новый `Client secret` (если кнопка генерации заблочена, обновить страницу), скопировать `Client secret`.
+9. Данные `Client secret` необходимо прописать во всех `appsettings.Development.json` проекта `backend`. Пример:
+```
+    "Keycloak": {
+        "Authority": "http://localhost:8090/realms/kortros",
+        "Realm": "kortros",
+        "ClientId": "kortros",
+        "ClientUuid": "3ac3b9a6-c1ad-4d68-ae19-4071c1e5d48c",
+        "ClientSecret": "CWexDUgylZQtRiqkGyd6SUUCgtcieiMV", // secret из realm kortros client kortros
+        "MetadataAddress": "http://localhost:8090/realms/insuranceGoSmoke/.well-known/openid-configuration",
+        "ApiAdminBaseUrl": "http://localhost:8090",
+        "ApiClientId": "admin-cli",
+        "ApiClientSecret": "tDZUqDNxHIfJ3kt4jnbTvYEVa2T2vnTU" // secret из realm master client admin-cli
+    }
+```
+
