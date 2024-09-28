@@ -1,0 +1,22 @@
+@InsuranceGoSmoke.Public.Hosts_HostAddress = http://localhost:5110
+
+GET {{InsuranceGoSmoke.Public.Hosts_HostAddress}}/identify/config
+Accept: application/json
+
+###
+
+POST {{InsuranceGoSmoke.Public.Hosts_HostAddress}}/identify/code/send?destination=+79999999999
+Accept: application/json
+
+###
+
+POST {{InsuranceGoSmoke.Public.Hosts_HostAddress}}/identify/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "UserName": "+79999999999",
+  "Password": "123456"
+}
+
+###

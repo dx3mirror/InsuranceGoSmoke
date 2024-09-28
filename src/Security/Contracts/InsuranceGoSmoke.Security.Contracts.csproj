@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Security.Contracts</Title>
+    <PackageDescription>Контракты</PackageDescription>
+    <Description>Контракты</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

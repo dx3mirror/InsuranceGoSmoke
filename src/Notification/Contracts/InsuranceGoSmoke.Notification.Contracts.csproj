@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Notification.Contracts</Title>
+    <PackageDescription>Контракты</PackageDescription>
+    <Description>Контракты</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

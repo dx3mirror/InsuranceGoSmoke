@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Notification.Applications.Handlers</Title>
+    <PackageDescription>Компоненты работы с обработчиками запросов.</PackageDescription>
+    <Description>Компоненты работы с обработчиками запросов.</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\Handlers\InsuranceGoSmoke.Common.Applications.Handlers.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Cqrs\InsuranceGoSmoke.Common.Cqrs.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Notification.Contracts.csproj" />
+    <ProjectReference Include="..\AppServices\InsuranceGoSmoke.Notification.Applications.AppServices.csproj" />
+  </ItemGroup>
+
+</Project>

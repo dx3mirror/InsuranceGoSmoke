@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Common.Cqrs</Title>
+    <PackageDescription>Общие компоненты для работы с CQRS</PackageDescription>
+    <Description>Общие компоненты для работы с CQRS</Description>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="OpenTelemetry.Api" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Applications\Handlers\InsuranceGoSmoke.Common.Applications.Handlers.csproj" />
+    <ProjectReference Include="..\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\Hosts\Common\InsuranceGoSmoke.Common.Hosts.csproj" />
+    <ProjectReference Include="..\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj" />
+  </ItemGroup>
+  
+</Project>

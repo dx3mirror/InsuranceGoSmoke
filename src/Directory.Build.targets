@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project>
+  <PropertyGroup>
+    <MediatRVersion>12.2.0</MediatRVersion>
+	
+    <SerilogVersion>4.0.0</SerilogVersion>
+    <SerilogAspNetCoreVersion>8.0.1</SerilogAspNetCoreVersion>
+    <SerilogExtensionsHostingVersion>8.0.0</SerilogExtensionsHostingVersion>
+    <SerilogSinksAsyncVersion>1.5.0</SerilogSinksAsyncVersion>
+    <SerilogSinksConsoleVersion>5.0.1</SerilogSinksConsoleVersion>
+    <SerilogSinksOpenSearchVersion>1.2.0</SerilogSinksOpenSearchVersion>
+	
+    <AspNetCoreHealthChecksVersion>8.0.0</AspNetCoreHealthChecksVersion>
+	
+    <FluentValidationVersion>11.9.0</FluentValidationVersion>
+	
+    <MicrosoftAspNetCoreAuthenticationInstanceVersion>8.0.2</MicrosoftAspNetCoreAuthenticationInstanceVersion>
+    <MicrosoftAspNetCoreAuthenticationVersion>2.1.1</MicrosoftAspNetCoreAuthenticationVersion>
+    <MicrosoftAspNetCoreHttpVersion>2.1.1</MicrosoftAspNetCoreHttpVersion>
+    <MicrosoftAspNetCoreRoutingVersion>2.1.1</MicrosoftAspNetCoreRoutingVersion>
+    <MicrosoftAspNetCoreVersion>8.0.0</MicrosoftAspNetCoreVersion>
+	
+	<IdentityModelVersion>7.0.0</IdentityModelVersion>
+	<IdentityModelAspNetCoreVersion>4.3.0</IdentityModelAspNetCoreVersion>
+	
+	<FlurlVersion>4.0.0</FlurlVersion>
+	
+    <SwashbuckleAspNetCoreVersion>6.4.0</SwashbuckleAspNetCoreVersion>
+	
+    <MicrosoftEntityFrameworkCoreToolsDotNetVersion>1.0.0</MicrosoftEntityFrameworkCoreToolsDotNetVersion>
+	
+    <AspNetCoreRateLimitVersion>5.0.0</AspNetCoreRateLimitVersion>
+	<AspNetCoreRateLimitRedisVersion>2.0.0</AspNetCoreRateLimitRedisVersion>
+	
+    <MoqVersion>4.20.70</MoqVersion>
+    <MoqEntityFrameworkCoreVersion>8.0.0.1</MoqEntityFrameworkCoreVersion>
+    <MicrosoftNetTestSdkVersion>17.6.0</MicrosoftNetTestSdkVersion>
+    <NUnitVersion>3.13.3</NUnitVersion>
+    <NUnit3TestAdapterVersion>4.2.1</NUnit3TestAdapterVersion>
+    <NUnitAnalyzersVersion>3.6.1</NUnitAnalyzersVersion>
+    <CoverletCollectorVersion>6.0.0</CoverletCollectorVersion>
+	
+    <OpenTelemetryVersion>1.8.1</OpenTelemetryVersion>
+    <OpenTelemetryInstrumentationRuntimeVersion>1.8.0</OpenTelemetryInstrumentationRuntimeVersion>
+	<OpenTelemetryInstrumentationEntityFrameworkCoreVersion>1.0.0-beta.11</OpenTelemetryInstrumentationEntityFrameworkCoreVersion>
+	<OpenTelemetryInstrumentationStackExchangeRedisVersion>1.0.0-rc9.14</OpenTelemetryInstrumentationStackExchangeRedisVersion>
+	
+	<ConfluentKafkaVersion>2.4.0</ConfluentKafkaVersion>
+	
+	<MailKitVersion>4.7.1.1</MailKitVersion>
+	
+	<MustacheVersion>1.1.0</MustacheVersion>
+	
+	<MinioVersion>6.0.3</MinioVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Update="MediatR" Version="$(MediatRVersion)" />
+	
+    <PackageReference Update="Serilog" Version="$(SerilogVersion)" />
+    <PackageReference Update="Serilog.AspNetCore" Version="$(SerilogAspNetCoreVersion)" />
+    <PackageReference Update="Serilog.Extensions.Hosting" Version="$(SerilogExtensionsHostingVersion)" />
+    <PackageReference Update="Serilog.Sinks.Async" Version="$(SerilogSinksAsyncVersion)" />
+    <PackageReference Update="Serilog.Sinks.Console" Version="$(SerilogSinksConsoleVersion)" />
+    <PackageReference Update="Serilog.Sinks.OpenSearch" Version="$(SerilogSinksOpenSearchVersion)" />
+    <PackageReference Update="Serilog.Formatting.OpenSearch" Version="$(SerilogSinksOpenSearchVersion)" />
+	
+    <PackageReference Update="FluentValidation" Version="$(FluentValidationVersion)" />
+    <PackageReference Update="FluentValidation.DependencyInjectionExtensions" Version="$(FluentValidationVersion)" />
+	
+    <PackageReference Update="AspNetCore.HealthChecks.NpgSql" Version="$(AspNetCoreHealthChecksVersion)" />
+    <PackageReference Update="AspNetCore.HealthChecks.Redis" Version="$(AspNetCoreHealthChecksVersion)" />
+	
+    <PackageReference Update="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(MicrosoftAspNetCoreAuthenticationInstanceVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(MicrosoftAspNetCoreAuthenticationInstanceVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Authentication" Version="$(MicrosoftAspNetCoreAuthenticationVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="$(MicrosoftAspNetCoreHttpVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Http.Extensions" Version="$(MicrosoftAspNetCoreHttpVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Routing" Version="$(MicrosoftAspNetCoreRoutingVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Hosting.Abstractions" Version="$(MicrosoftAspNetCoreRoutingVersion)" />
+	
+	<PackageReference Update="Microsoft.Extensions.Options" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Hosting" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Hosting.Abstractions" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Configuration.Abstractions" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Configuration.Binder" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Http" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Configuration.Binder" Version="$(MicrosoftAspNetCoreVersion)" />
+	
+    <DotNetCliToolReference Update="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="$(MicrosoftEntityFrameworkCoreToolsDotNetVersion)" />
+    <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(MicrosoftAspNetCoreVersion)" />
+	<PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(MicrosoftAspNetCoreVersion)" />
+	<PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftAspNetCoreVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Update="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(MicrosoftAspNetCoreVersion)" />
+	
+    <PackageReference Update="IdentityModel" Version="$(IdentityModelVersion)" />
+	<PackageReference Update="IdentityModel.AspNetCore" Version="$(IdentityModelAspNetCoreVersion)" />
+	
+    <PackageReference Update="Flurl" Version="$(FlurlVersion)" />
+	
+    <PackageReference Update="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCoreVersion)" />
+	
+    <PackageReference Update="Microsoft.Extensions.Caching.Abstractions" Version="$(MicrosoftAspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Caching.StackExchangeRedis" Version="$(MicrosoftAspNetCoreVersion)" />
+	
+    <PackageReference Update="AspNetCoreRateLimit" Version="$(AspNetCoreRateLimitVersion)" />
+    <PackageReference Update="AspNetCoreRateLimit.Redis" Version="$(AspNetCoreRateLimitRedisVersion)" />
+	
+    <PackageReference Update="Moq" Version="$(MoqVersion)" />
+    <PackageReference Update="Moq.EntityFrameworkCore" Version="$(MoqEntityFrameworkCoreVersion)" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNetTestSdkVersion)" />
+    <PackageReference Update="NUnit" Version="$(NUnitVersion)" />
+    <PackageReference Update="NUnit3TestAdapter" Version="$(NUnit3TestAdapterVersion)" />
+    <PackageReference Update="NUnit.Analyzers" Version="$(NUnitAnalyzersVersion)" />
+    <PackageReference Update="coverlet.collector" Version="$(CoverletCollectorVersion)" />
+	
+	<PackageReference Update="OpenTelemetry" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Api" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Exporter.Console" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Extensions.Hosting" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.AspNetCore" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.Http" Version="$(OpenTelemetryVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.Runtime" Version="$(OpenTelemetryInstrumentationRuntimeVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.GrpcNetClient" Version="$(OpenTelemetryInstrumentationGrpcNetClientVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="$(OpenTelemetryInstrumentationEntityFrameworkCoreVersion)" />
+	<PackageReference Update="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="$(OpenTelemetryInstrumentationStackExchangeRedisVersion)" />
+	
+	<PackageReference Update="Confluent.Kafka" Version="$(ConfluentKafkaVersion)" />
+	
+	<PackageReference Update="Mustache.NETStandard" Version="$(MustacheVersion)" />
+	
+    <PackageReference Update="MailKit" Version="$(MailKitVersion)" />
+	
+    <PackageReference Update="Minio" Version="$(MinioVersion)" />
+  </ItemGroup>
+</Project>

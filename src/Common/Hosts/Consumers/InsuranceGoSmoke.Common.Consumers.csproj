@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Common.Consumers</Title>
+    <PackageDescription>Общий компонент работы с consumer'ами событий</PackageDescription>
+    <Description>Общий компонент работы с consumer'ами событий</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+  </ItemGroup>
+</Project>

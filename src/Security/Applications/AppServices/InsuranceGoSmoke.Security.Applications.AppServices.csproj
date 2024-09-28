@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Security.Applications.AppServices</Title>
+    <PackageDescription>Компоненты работы с сервисами.</PackageDescription>
+    <Description>Компоненты работы с сервисами.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\AppServices\InsuranceGoSmoke.Common.Applications.AppServices.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Notification\Clients\InsuranceGoSmoke.Notification.Clients.csproj" />
+    <ProjectReference Include="..\..\..\Notification\Contracts\InsuranceGoSmoke.Notification.Contracts.csproj" />
+    <ProjectReference Include="..\..\Clients\ExternalClients\InsuranceGoSmoke.Security.ExternalClients.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Security.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

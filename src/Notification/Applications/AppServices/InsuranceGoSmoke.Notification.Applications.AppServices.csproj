@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Notification.Applications.AppServices</Title>
+    <PackageDescription>Компоненты работы с сервисами.</PackageDescription>
+    <Description>Компоненты работы с сервисами.</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" />
+    <PackageReference Include="Microsoft.Exchange.WebServices" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Mustache.NETStandard" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\AppServices\InsuranceGoSmoke.Common.Applications.AppServices.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\Static\Clients\InsuranceGoSmoke.Static.Clients.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Notification.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

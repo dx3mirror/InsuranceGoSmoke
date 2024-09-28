@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Common.Applications.Handlers</Title>
+    <PackageDescription>Общие компоненты работы с обработчиками запросов.</PackageDescription>
+    <Description>Общие компоненты работы с обработчиками запросов.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\AppServices\InsuranceGoSmoke.Common.Applications.AppServices.csproj" />
+  </ItemGroup>
+</Project>

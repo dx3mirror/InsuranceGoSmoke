@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Security.Applications.Handlers</Title>
+    <PackageDescription>Компоненты работы с обработчиками запросов.</PackageDescription>
+    <Description>Компоненты работы с обработчиками запросов.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\Handlers\InsuranceGoSmoke.Common.Applications.Handlers.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Cqrs\InsuranceGoSmoke.Common.Cqrs.csproj" />
+    <ProjectReference Include="..\..\..\Common\Hosts\Consumers\InsuranceGoSmoke.Common.Consumers.csproj" />
+    <ProjectReference Include="..\..\..\Notification\Clients\InsuranceGoSmoke.Notification.Clients.csproj" />
+    <ProjectReference Include="..\..\..\Notification\Contracts\InsuranceGoSmoke.Notification.Contracts.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.Security.Contracts.csproj" />
+    <ProjectReference Include="..\AppServices\InsuranceGoSmoke.Security.Applications.AppServices.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,130 @@
+networks:
+  kortros:
+    driver: bridge
+
+services:
+  example_public_api:
+    container_name: example.public.api
+    image: example_public_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Example/Hosts/Public/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5100:80"
+      
+  example_private_api:
+    container_name: example.private.api
+    image: example_private_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Example/Hosts/Private/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5101:80"
+      
+  example_migration:
+    container_name: example.migration
+    image: example_migration:latest
+    env_file:
+      - .configs/.console.env
+    build:
+      context: .
+      dockerfile: Example/Hosts/Migrations/Dockerfile
+    networks:
+      - kortros
+      
+      
+  files_public_api:
+    container_name: files.public.api
+    image: files_public_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Files/Hosts/Public/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5150:80"
+      
+      
+  security_public_api:
+    container_name: security.public.api
+    image: security_public_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Security/Hosts/Public/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5110:80"
+
+
+  notification_private_api:
+    container_name: notification.private.api
+    image: notification_private_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Notification/Hosts/Private/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5121:80"
+
+  notification_consumer:
+    container_name: notification.consumer
+    image: notification_consumer:latest
+    env_file:
+      - .configs/.console.env
+    build:
+      context: .
+      dockerfile: Notification/Hosts/Consumers/Dockerfile
+    restart: always
+    networks:
+      - kortros
+
+
+  personal_public_api:
+    container_name: personal.public.api
+    image: personal_public_api:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: PersonalAccount/Hosts/Public/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5130:80"
+
+
+  static:
+    container_name: static
+    image: static:latest
+    env_file:
+      - .configs/.web.env
+    build:
+      context: .
+      dockerfile: Static/Dockerfile
+    restart: always
+    networks:
+      - kortros
+    ports:
+      - "5190:80"

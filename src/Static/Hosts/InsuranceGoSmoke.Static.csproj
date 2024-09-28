@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Static</Title>
+    <PackageDescription>Статичные компоненты</PackageDescription>
+    <Description>Статичные компоненты</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\Notifications\email.confirmation.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\Notifications\email.confirmation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+</Project>

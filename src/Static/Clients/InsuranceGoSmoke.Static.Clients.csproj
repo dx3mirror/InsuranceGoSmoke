@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Static.Clients</Title>
+    <PackageDescription>Клиенты для статичных компонентов</PackageDescription>
+    <Description>Клиенты для статичных компонентов</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Templates\**" />
+    <Content Remove="Templates\**" />
+    <EmbeddedResource Remove="Templates\**" />
+    <None Remove="Templates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+  </ItemGroup>
+</Project>

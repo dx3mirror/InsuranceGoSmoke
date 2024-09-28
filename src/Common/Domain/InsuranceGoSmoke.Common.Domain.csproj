@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Common.Domain</Title>
+    <PackageDescription>Общие доменные компоненты</PackageDescription>
+    <Description>Общие доменные компоненты</Description>
+  </PropertyGroup>
+
+</Project>

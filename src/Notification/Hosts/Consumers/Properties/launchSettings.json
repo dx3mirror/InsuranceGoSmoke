@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Kortros.Notification.Consumers": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

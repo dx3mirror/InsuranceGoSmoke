@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>Kortros.Common.Tests</Title>
+    <PackageDescription>Тесты.</PackageDescription>
+    <Description>Тесты.</Description>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    
+    <SonarQubeTestProject>true</SonarQubeTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit.Analyzers" />
+    <PackageReference Include="NUnit3TestAdapter" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Applications\Handlers\InsuranceGoSmoke.Common.Applications.Handlers.csproj" />
+    <ProjectReference Include="..\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\Cqrs\InsuranceGoSmoke.Common.Cqrs.csproj" />
+    <ProjectReference Include="..\Domain\InsuranceGoSmoke.Common.Domain.csproj" />
+    <ProjectReference Include="..\Hosts\Api\InsuranceGoSmoke.Common.Hosts.Api.csproj" />
+    <ProjectReference Include="..\Hosts\Common\InsuranceGoSmoke.Common.Hosts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="UnitTests\Clients\Keycloak\openid-configuration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

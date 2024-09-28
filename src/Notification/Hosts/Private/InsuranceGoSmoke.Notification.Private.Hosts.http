@@ -1,0 +1,17 @@
+@InsuranceGoSmoke.Public.Hosts_HostAddress = http://localhost:5121
+
+###
+
+POST {{InsuranceGoSmoke.Public.Hosts_HostAddress}}/notification/email/send
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Email": "test@ya.ru",
+  "NotificationType": "EmailConfirmed",
+  "Data": {
+    { "Link": "bebra.ru" }
+  }
+}
+
+###

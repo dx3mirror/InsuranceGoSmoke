@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.Common.Clients</Title>
+    <PackageDescription>Общие компоненты работы с клиентами.</PackageDescription>
+    <Description>Общие компоненты работы с клиентами.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl" />
+    <PackageReference Include="IdentityModel" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" />
+    <PackageReference Include="IdentityModel.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+  </ItemGroup>
+</Project>
+ 
