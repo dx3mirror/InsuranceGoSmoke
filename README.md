@@ -65,7 +65,7 @@ Solution делится на следующий части:
         "Realm": "kortros",
         "ClientId": "kortros",
         "ClientUuid": "3ac3b9a6-c1ad-4d68-ae19-4071c1e5d48c",
-        "ClientSecret": "CWexDUgylZQtRiqkGyd6SUUCgtcieiMV", // secret из realm kortros client kortros
+        "ClientSecret": "CWexDUgylZQtRiqkGyd6SUUCgtcieiMV", // secret из realm  client 
         "MetadataAddress": "http://localhost:8090/realms/insuranceGoSmoke/.well-known/openid-configuration",
         "ApiAdminBaseUrl": "http://localhost:8090",
         "ApiClientId": "admin-cli",
