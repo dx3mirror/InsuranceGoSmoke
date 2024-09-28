@@ -8,5 +8,9 @@
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Domain\InsuranceGoSmoke.Common.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>
