@@ -1,6 +1,6 @@
 services:
   redis:
-    container_name: redis
+    container_name: smoke_redis
     image: "redis:7.2.4-alpine"
     restart: on-failure
     command: >
@@ -13,7 +13,7 @@ services:
       - goSmoke
 
   postgres:
-    container_name: postgres
+    container_name: smoke_postgres
     image: "postgres:16.2-bullseye"
     restart: on-failure
     hostname: postgres
@@ -74,7 +74,7 @@ services:
       - goSmoke
       
   pgadmin:
-    container_name: pgadmin
+    container_name: smoke_pgadmin
     image: dpage/pgadmin4:7.2
     restart: on-failure
     environment:
@@ -94,7 +94,7 @@ services:
       - goSmoke
         
   keycloak:
-    container_name: keycloak
+    container_name: smoke_keycloak
     image: quay.io/keycloak/keycloak:21.0.1 # plugin'а работы с смс интегрирован с версией 21.0.1, ждем https://github.com/cooperlyt/keycloak-phone-provider/pull/111
     # --spi-phone-default-target-hour-maximum=0 --spi-phone-default-source-hour-maximum=0 отключает проверку количества отправок смс в час
     # --spi-phone-default-goSmoke-ignore-exceptions-sending-sms в true для игнорирования ошибок отправки СМС через провайдера
@@ -149,7 +149,7 @@ services:
       
   # для переброски логов из keycloak в opensearch
   fluentbit:
-    container_name: fluentbit
+    container_name: smoke_fluentbit
     image: cr.fluentbit.io/fluent/fluent-bit:3.1.3
     command: /fluent-bit/bin/fluent-bit -c /fluent-bit/etc/fluent-bit.conf
     restart: on-failure
@@ -164,7 +164,7 @@ services:
       - goSmoke
 
   opensearch:
-    container_name: opensearch
+    container_name: smoke_opensearch
     image: opensearchproject/opensearch:2.14.0
     environment:
       - cluster.name=opensearch-cluster # Name the cluster
@@ -197,7 +197,7 @@ services:
       - goSmoke
       
   opensearch-dashboards:
-    container_name: opensearch-dashboards
+    container_name: smoke_opensearch-dashboards
     image: opensearchproject/opensearch-dashboards:2.14.0
     restart: on-failure
     depends_on:
@@ -214,7 +214,7 @@ services:
       - goSmoke
 
   minio:
-    container_name: minio
+    container_name: smoke_minio
     image: minio/minio:RELEASE.2024-08-03T04-33-23Z
     restart: on-failure
     ports:

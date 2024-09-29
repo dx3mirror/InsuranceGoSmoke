@@ -1,6 +1,6 @@
 services:
   grafana: 
-    container_name: grafana
+    container_name: smoke_grafana
     image: grafana/grafana:10.4.2
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
@@ -15,7 +15,7 @@ services:
       - goSmoke
         
   jaeger:
-    container_name: jaeger
+    container_name: smoke_jaeger
     image: jaegertracing/all-in-one:1.57
     restart: unless-stopped
     environment: 
