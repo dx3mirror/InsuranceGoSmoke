@@ -1,0 +1,300 @@
+services:
+  redis:
+    container_name: redis
+    image: "redis:7.2.4-alpine"
+    restart: on-failure
+    command: >
+      --requirepass pa55w0rd
+    ports:
+      - 6379:6379
+    volumes: 
+      - redis_data:/data
+    networks:
+      - goSmoke
+
+  postgres:
+    container_name: postgres
+    image: "postgres:16.2-bullseye"
+    restart: on-failure
+    hostname: postgres
+    command:
+      - "postgres"
+      - "-c"
+      - "max_connections=50"
+      - "-c"
+      - "shared_buffers=1GB"
+      - "-c"
+      - "effective_cache_size=4GB"
+      - "-c"
+      - "work_mem=16MB"
+      - "-c"
+      - "maintenance_work_mem=512MB"
+      - "-c"
+      - "random_page_cost=1.1"
+      - "-c"
+      - "temp_file_limit=10GB"
+      - "-c"
+      - "log_min_duration_statement=200ms"
+      - "-c"
+      - "idle_in_transaction_session_timeout=10s"
+      - "-c"
+      - "lock_timeout=1s"
+      - "-c"
+      - "statement_timeout=60s"
+      - "-c"
+      - "shared_preload_libraries=pg_stat_statements"
+      - "-c"
+      - "pg_stat_statements.max=10000"
+      - "-c"
+      - "pg_stat_statements.track=all"
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+      DB_HOST: goSmoke
+      DB_PORT: 5432
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 4G
+    volumes: 
+      - ${POSTGRE_DATA_DIR}/backups:/data
+      - ${POSTGRE_DATA_DIR}/init:/docker-entrypoint-initdb.d
+      - postgre_data:/var/lib/postgresql/data
+    networks:
+      - goSmoke
+      
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:7.2
+    restart: on-failure
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "postgres@postgres.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+    networks:
+      - goSmoke
+        
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:21.0.1 # plugin'а работы с смс интегрирован с версией 21.0.1, ждем https://github.com/cooperlyt/keycloak-phone-provider/pull/111
+    # --spi-phone-default-target-hour-maximum=0 --spi-phone-default-source-hour-maximum=0 отключает проверку количества отправок смс в час
+    # --spi-phone-default-goSmoke-ignore-exceptions-sending-sms в true для игнорирования ошибок отправки СМС через провайдера
+    # --username и password необходимо заменить или использовать флаг ignore-sending-sms (без этих параметром smsc падает с NRE)
+    # spi-phone-default-goSmoke-test-users-enabled предоставляет статичный код доступа для номеров: 79999999999, 79999999995, 79999999990
+    command: >
+        start-dev 
+        --import-realm 
+        --log-level=INFO
+        --log="console,file"
+        --log-console-color=true
+        --spi-phone-default-service=smscru 
+        --spi-message-sender-service-smscru-username=user \
+        --spi-message-sender-service-smscru-password=password \
+        --spi-phone-default-target-hour-maximum=0 
+        --spi-phone-default-source-hour-maximum=0 
+        --spi-phone-default-goSmoke-phone-default-region=RU 
+        --spi-phone-default-goSmoke-otp-expires=600 
+        --spi-phone-default-goSmoke-code-length=4 
+        --spi-phone-default-goSmoke-ignore-sms-sender=true
+        --spi-phone-default-goSmoke-ignore-exceptions-sending-sms=true
+        --spi-phone-default-goSmoke-test-users-enabled=true
+    user: root
+    environment:
+      KC_FEATURES: preview
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/postgres
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+      KC_RUN_IN_CONTAINER: true
+      KC_METRICS_ENABLED: true
+      KC_HEALTH_ENABLED: true
+    restart: on-failure
+    ports:
+      - 8090:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://0.0.0.0:8080/realms/master"]
+      interval: 30s
+      retries: 3
+      timeout: 5s
+    volumes:
+      - ./keycloak/import:/opt/keycloak/data/import
+      - ./keycloak/providers:/opt/keycloak/providers
+      - keycloak_logs:/opt/keycloak/data/log/
+    networks:
+      - goSmoke
+      
+  # для переброски логов из keycloak в opensearch
+  fluentbit:
+    container_name: fluentbit
+    image: cr.fluentbit.io/fluent/fluent-bit:3.1.3
+    command: /fluent-bit/bin/fluent-bit -c /fluent-bit/etc/fluent-bit.conf
+    restart: on-failure
+    user: root
+    depends_on:
+      - keycloak
+      - opensearch
+    volumes:
+      - ./fluentbit:/fluent-bit/etc
+      - keycloak_logs:/logs:ro  # Примонтировать volume для логов
+    networks:
+      - goSmoke
+
+  opensearch:
+    container_name: opensearch
+    image: opensearchproject/opensearch:2.14.0
+    environment:
+      - cluster.name=opensearch-cluster # Name the cluster
+      - node.name=opensearch-node # Name the node that will run in this container
+      - discovery.seed_hosts=opensearch-node # Nodes to look for when discovering the cluster
+      - cluster.initial_cluster_manager_nodes=opensearch-node # Nodes eligible to serve as cluster manager
+      - bootstrap.memory_lock=true # Disable JVM heap memory swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
+      - "DISABLE_INSTALL_DEMO_CONFIG=true" # Prevents execution of bundled demo script which installs demo certificates and security configurations to OpenSearch
+      - "DISABLE_SECURITY_PLUGIN=true" # Disables Security plugin
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 65536
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://0.0.0.0:9200"]
+      interval: 30s
+      retries: 3
+      timeout: 5s
+    restart: on-failure
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data # Creates volume called opensearch-data1 and mounts it to the container
+    ports:
+      - 9200:9200 # REST API
+      - 9600:9600 # Performance Analyzer
+    networks:
+      - goSmoke
+      
+  opensearch-dashboards:
+    container_name: opensearch-dashboards
+    image: opensearchproject/opensearch-dashboards:2.14.0
+    restart: on-failure
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    ports:
+      - 5601:5601 # Map host port 5601 to container port 5601
+    expose:
+      - "5601" # Expose port 5601 for web access to OpenSearch Dashboards
+    environment:
+      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
+    networks:
+      - goSmoke
+
+  minio:
+    container_name: minio
+    image: minio/minio:RELEASE.2024-08-03T04-33-23Z
+    restart: on-failure
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_storage:/data
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: pa55w0rd
+      MINIO_HTTP_TRACE: /tmp/minio.log
+    command: server --console-address ":9001" /data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - goSmoke
+
+  #zookeeper:
+  #  container_name: zookeeper
+  #  image: confluentinc/cp-zookeeper:7.6.1
+  #  restart: on-failure
+  #  environment:
+  #    ZOOKEEPER_CLIENT_PORT: 2181
+  #    ZOOKEEPER_TICK_TIME: 2000
+  #  ports:
+  #    - 2181:2181
+  #  networks:
+  #    - goSmoke
+  #
+  #kafka:
+  #  container_name: kafka
+  #  hostname: kafka
+  #  image: confluentinc/cp-kafka:7.6.1
+  #  restart: on-failure
+  #  depends_on:
+  #    - zookeeper
+  #  environment:
+  #    KAFKA_BROKER_ID: 1
+  #    KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #    KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://host.docker.internal:9092
+  #    KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+  #    KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+  #    KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #    KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+  #  ports:
+  #    - 9092:9092
+  #  networks:
+  #    - goSmoke
+  #     
+  #kafka-ui:
+  #  container_name: kafka-ui
+  #  image: provectuslabs/kafka-ui:v0.7.2
+  #  restart: always
+  #  environment:
+  #    DYNAMIC_CONFIG_ENABLED: true
+  #    KAFKA_CLUSTERS_0_NAME: local
+  #    KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+  #    KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+  #  ports:
+  #    - 8100:8080
+  #  depends_on:
+  #    - zookeeper
+  #    - kafka
+  #  links:
+  #    - kafka
+  #    - zookeeper
+  #  networks:
+  #    - goSmoke
+      
+volumes:
+  redis_data:
+  postgre_data:
+  pgadmin-data:
+  opensearch-data:
+  keycloak_logs:
+  minio_storage: {}
+  
+networks:
+  goSmoke:
+    driver: bridge
