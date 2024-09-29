@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.PersonalAccount.Hosts.Migrations</Title>
+    <PackageDescription>Компоненты работы с миграциями БД</PackageDescription>
+    <Description>Компоненты работы с миграциями БД</Description>
+
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Hosts\Migrations\InsuranceGoSmoke.Common.Hosts.Migrations.csproj" />
+    <ProjectReference Include="..\..\Infrastructures\DataAccess\InsuranceGoSmoke.PersonalAccount.Infrastructures.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="appsettings.Docker.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.Docker.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

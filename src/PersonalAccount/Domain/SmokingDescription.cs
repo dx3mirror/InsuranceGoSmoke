@@ -9,7 +9,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с его описанием ().
         /// </summary>
-        public required Int32 ClientId { get; set; }
+        public required long ClientId { get; set; }
 
         /// <summary>
         /// Опыт курения в годах (nullable).
@@ -46,6 +46,13 @@
         /// </summary>
         public String? About { get; set; }
 
+        /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public SmokingDescription()
+        {
+            
+        }
         /// <summary>
         /// Ctor
         /// </summary>

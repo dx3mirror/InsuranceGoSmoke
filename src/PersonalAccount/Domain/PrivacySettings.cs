@@ -9,7 +9,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с настройками приватности (ID).
         /// </summary>
-        public required Int32 ClientId { get; set; }
+        public required long ClientId { get; set; }
 
         /// <summary>
         /// Указывает, отображать ли электронную почту пользователю. По умолчанию false.
@@ -27,10 +27,17 @@
         public bool ShowDescription { get; set; } = false;
 
         /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public PrivacySettings()
+        {
+            
+        }
+        /// <summary>
         /// Конструктор, принимающий уникальный идентификатор клиента.
         /// </summary>
         /// <param name="clientId">Уникальный идентификатор клиента.</param>
-        public PrivacySettings(Int32 clientId)
+        public PrivacySettings(long clientId)
         {
             ClientId = clientId;
         }

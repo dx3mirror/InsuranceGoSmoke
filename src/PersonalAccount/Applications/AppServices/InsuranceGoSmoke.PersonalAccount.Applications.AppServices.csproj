@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.PersonalAccount.Applications.AppServices</Title>
+    <PackageDescription>Компоненты работы с сервисами.</PackageDescription>
+    <Description>Компоненты работы с сервисами.</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\AppServices\InsuranceGoSmoke.Common.Applications.AppServices.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.PersonalAccount.Contracts.csproj" />
+    <ProjectReference Include="..\..\Domain\InsuranceGoSmoke.PersonalAccount.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

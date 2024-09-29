@@ -9,7 +9,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с аватаром (FKGUIDCLIENT).
         /// </summary>
-        public Int32 ClientId { get; set; }
+        public long ClientId { get; set; }
 
         /// <summary>
         /// Данные изображения аватарки.
@@ -27,11 +27,18 @@
         public ICollection<AvatarHistory>? AvatarHistories { get; set; }
 
         /// <summary>
+        /// CtorEf
+        /// </summary>
+        public Avatar()
+        {
+            
+        }
+        /// <summary>
         /// Ctor
         /// </summary>
         /// <param name="clientId"></param>
         /// <param name="avatar"></param>
-        public Avatar(Int32 clientId, Guid avatar)
+        public Avatar(long clientId, Guid avatar)
         {
             ClientId = clientId;
             ImageData = avatar;

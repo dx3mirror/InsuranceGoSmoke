@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.PersonalAccount.Applications.Handlers</Title>
+    <PackageDescription>Компоненты работы с обработчиками запросов.</PackageDescription>
+    <Description>Компоненты работы с обработчиками запросов.</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+</Project>

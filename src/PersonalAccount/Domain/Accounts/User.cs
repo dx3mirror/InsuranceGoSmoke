@@ -64,6 +64,14 @@ namespace InsuranceGoSmoke.PersonalAccount.Domain.Account
         public ICollection<PurchaseHistory>? PurchaseHistories { get; set; }
 
         /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public User()
+        {
+            
+        }
+
+        /// <summary>
         /// ctor
         /// </summary>
         /// <param name="clientId"></param>

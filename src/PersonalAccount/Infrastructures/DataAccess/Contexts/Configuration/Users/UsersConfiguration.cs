@@ -41,9 +41,10 @@ namespace InsuranceGoSmoke.PersonalAccount.Infrastructures.DataAccess.Contexts.C
                   .WithOne()
                   .HasForeignKey<User>(e => e.Id);
 
-            entity.HasMany(e => e.PurchaseHistories)
-                  .WithOne()
-                  .HasForeignKey(ph => ph.ClientId);
+            entity.HasMany(u => u.PurchaseHistories)
+            .WithOne(ph => ph.User)
+            .HasForeignKey(ph => ph.ClientId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

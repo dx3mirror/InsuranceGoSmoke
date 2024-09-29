@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "InsuranceGoSmoke.PersonalAccount.Hosts.Migration": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

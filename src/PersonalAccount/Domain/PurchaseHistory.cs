@@ -1,4 +1,6 @@
-﻿namespace InsuranceGoSmoke.PersonalAccount.Domain
+﻿using InsuranceGoSmoke.PersonalAccount.Domain.Account;
+
+namespace InsuranceGoSmoke.PersonalAccount.Domain
 {
     /// <summary>
     /// Класс PurchaseHistory содержит информацию о покупках клиента,
@@ -9,7 +11,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с историей покупок (FKGUIDCLIENT).
         /// </summary>
-        public Int32 ClientId { get; set; }
+        public long ClientId { get; set; }
 
         /// <summary>
         /// Дата и время, когда была осуществлена покупка.
@@ -22,10 +24,22 @@
         public required String StatusPurchased { get; set; }
 
         /// <summary>
+        /// Cсылка на пользолвателя
+        /// </summary>
+        public User? User { get; set; }
+
+        /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public PurchaseHistory()
+        {
+            
+        }
+        /// <summary>
         /// Конструктор класса PurchaseHistory, принимающий уникальный идентификатор клиента.
         /// </summary>
         /// <param name="clientId">Уникальный идентификатор клиента.</param>
-        public PurchaseHistory(Int32 clientId)
+        public PurchaseHistory(long clientId)
         {
             ClientId = clientId;
         }

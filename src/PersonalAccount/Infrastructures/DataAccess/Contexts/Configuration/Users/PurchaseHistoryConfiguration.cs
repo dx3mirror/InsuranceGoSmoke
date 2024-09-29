@@ -13,8 +13,25 @@ namespace InsuranceGoSmoke.PersonalAccount.Infrastructures.DataAccess.Contexts.C
         /// <inheritdoc/>
         public void Configure(EntityTypeBuilder<PurchaseHistory> entity)
         {
-            entity.HasKey(e => new { e.ClientId, e.PurchaseDate });
-            entity.Property(e => e.StatusPurchased).IsRequired().HasMaxLength(PropertyLengthConstants.Length200);
+            // Установка первичного ключа
+            entity.HasKey(e => e.ClientId);
+
+            // Установка свойств
+            entity.Property(e => e.ClientId)
+                .IsRequired();
+
+            entity.Property(e => e.PurchaseDate)
+                .IsRequired();
+
+            entity.Property(e => e.StatusPurchased)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            // Настройка отношений
+            entity.HasOne(e => e.User)
+                .WithMany(u => u.PurchaseHistories)
+                .HasForeignKey(e => e.ClientId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -16,6 +16,4 @@
     <ProjectReference Include="..\..\..\Common\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj" />
     <ProjectReference Include="..\..\Domain\InsuranceGoSmoke.PersonalAccount.Domain.csproj" />
   </ItemGroup>
-
-
 </Project>

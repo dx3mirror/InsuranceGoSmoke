@@ -9,7 +9,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с дизайном профиля (FKGUIDCLIENT).
         /// </summary>
-        public Int32 ClientId { get; set; }
+        public long ClientId { get; set; }
 
         /// <summary>
         /// Цвет темы профиля, например, для оформления интерфейса.
@@ -32,10 +32,17 @@
         public bool EnableAnimations { get; set; } = true;
 
         /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public ProfileDesign()
+        {
+            
+        }
+        /// <summary>
         /// Конструктор, принимающий уникальный идентификатор клиента.
         /// </summary>
         /// <param name="clientId"></param>
-        public ProfileDesign(Int32 clientId)
+        public ProfileDesign(long clientId)
         {
             ClientId = clientId;
         }

@@ -9,7 +9,7 @@
         /// <summary>
         /// Уникальный идентификатор клиента, связанный с аккаунтом ().
         /// </summary>
-        public required Int32 ClientId { get; set; }
+        public required long ClientId { get; set; }
 
         /// <summary>
         /// Показывает, виден ли аккаунт для других пользователей. По умолчанию true.
@@ -32,10 +32,17 @@
         public bool IsPremium { get; set; } = true;
 
         /// <summary>
+        /// Ctor EF
+        /// </summary>
+        public AccountStatus()
+        {
+
+        }
+        /// <summary>
         /// Ctor
         /// </summary>
         /// <param name="clientId"></param>
-        public AccountStatus(Int32 clientId)
+        public AccountStatus(long clientId)
         {
             ClientId = clientId;
         }
