@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>InsuranceGoSmoke.PersonalAccount.Infrastructures.DataAccess</Title>
+    <PackageDescription>Компоненты работы с доступом к данным.</PackageDescription>
+    <Description>Компоненты работы с доступом к данным.</Description>
+
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Domain\InsuranceGoSmoke.PersonalAccount.Domain.csproj" />
+  </ItemGroup>
+
+
+</Project>

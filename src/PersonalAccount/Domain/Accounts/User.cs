@@ -72,5 +72,4 @@ namespace InsuranceGoSmoke.PersonalAccount.Domain.Account
             ClientGuid = clientId;
         }
     }
-
 }
