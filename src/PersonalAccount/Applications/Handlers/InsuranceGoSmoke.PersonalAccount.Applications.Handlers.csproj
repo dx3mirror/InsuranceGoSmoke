@@ -8,4 +8,16 @@
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Contexts\ActiveUsers\Command\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Applications\Handlers\InsuranceGoSmoke.Common.Applications.Handlers.csproj" />
+    <ProjectReference Include="..\..\..\Common\Contracts\InsuranceGoSmoke.Common.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Common\Cqrs\InsuranceGoSmoke.Common.Cqrs.csproj" />
+    <ProjectReference Include="..\..\Contracts\InsuranceGoSmoke.PersonalAccount.Contracts.csproj" />
+    <ProjectReference Include="..\AppServices\InsuranceGoSmoke.PersonalAccount.Applications.AppServices.csproj" />
+  </ItemGroup>
+
 </Project>

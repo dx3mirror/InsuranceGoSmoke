@@ -66,6 +66,5 @@ namespace InsuranceGoSmoke.Common.Test.Infrastructure
 
             dbContext?.Database.EnsureDeleted();
         }
-
     }
 }

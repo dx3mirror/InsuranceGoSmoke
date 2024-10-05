@@ -14,35 +14,34 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
     /// </summary>
     public class ReceivingActiveUsersServices : IReceivingActiveUsersServices
     {
-        private readonly IRepository<User> _repository;
+        private readonly IRepository<User> _userRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReceivingActiveUsersServices"/> class.
         /// </summary>
-        /// <param name="repository">Репозиторий пользователей.</param>
-        public ReceivingActiveUsersServices(
-            IRepository<User> repository)
-        {
-            _repository = repository;
-        }
+        /// <param name="userRepository">Репозиторий пользователей.</param>
+        public ReceivingActiveUsersServices(IRepository<User> userRepository)
+    {
+        _userRepository = userRepository;
+    }
 
-        /// <summary>
-        /// Получает основную информацию о пользователе по его идентификатору.
-        /// </summary>
-        /// <param name="userId">Идентификатор пользователя.</param>
-        /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
-        /// <returns>
-        /// Объект <see cref="UserMainInformationResponse"/> с основной информацией о пользователе.
-        /// </returns>
-        /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        public async Task<UserMainInformationResponse> GetActiveUsersMainInformationAsync(int userId, CancellationToken cancellationToken)
+    /// <summary>
+    /// Получает основную информацию о пользователе по его идентификатору.
+    /// </summary>
+    /// <param name="userId">Идентификатор пользователя.</param>
+    /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
+    /// <returns>
+    /// Объект <see cref="UserMainInformationResponse"/> с основной информацией о пользователе.
+    /// </returns>
+    /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
+    public async Task<UserMainInformationResponse> GetActiveUsersMainInformationAsync(long userId, CancellationToken cancellationToken)
         {
             var combinedSpecification = new UserByIdSpecification(userId)
                 .And(new UserAccessibleSpecification())
                 .And(new UserNotBlockedSpecification())
                 .And(new UserVisibleSpecification());
 
-            var user = await _repository.AsQueryable()
+            var user = await _userRepository.AsQueryable()
                           .AsNoTracking()
                           .Where(combinedSpecification)
                           .Select(q => new UserMainInformationResponse
@@ -64,14 +63,14 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserPrivacySettingsResponse"/> с настройками конфиденциальности пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        public async Task<UserPrivacySettingsResponse> GetRulePrivacyUserAsync(int userId, CancellationToken cancellationToken)
+        public async Task<UserPrivacySettingsResponse> GetRulePrivacyUserAsync(long userId, CancellationToken cancellationToken)
         {
             var combinedSpecification = new UserByIdSpecification(userId)
                 .And(new UserAccessibleSpecification())
                 .And(new UserNotBlockedSpecification())
                 .And(new UserVisibleSpecification());
 
-            var privacySettings = await _repository.AsQueryable()
+            var privacySettings = await _userRepository.AsQueryable()
                           .AsNoTracking()
                           .Where(combinedSpecification)
                           .Select(q => new UserPrivacySettingsResponse
@@ -92,14 +91,14 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserDescriptionResponse"/> с описанием пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        public async Task<UserDescriptionResponse> GetDescriptionUserAsync(int userId, CancellationToken cancellationToken)
+        public async Task<UserDescriptionResponse> GetDescriptionUserAsync(long userId, CancellationToken cancellationToken)
         {
             var combinedSpecification = new UserByIdSpecification(userId)
                 .And(new UserAccessibleSpecification())
                 .And(new UserNotBlockedSpecification())
                 .And(new UserVisibleSpecification());
 
-            var description = await _repository.AsQueryable()
+            var description = await _userRepository.AsQueryable()
                   .AsNoTracking()
                   .Where(combinedSpecification)
                   .Select(q => new UserDescriptionResponse
@@ -123,14 +122,14 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserProfileDesignResponse"/> с настройками дизайна профиля пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        public async Task<UserProfileDesignResponse> GetUserProfileDesignAsync(int userId, CancellationToken cancellationToken)
+        public async Task<UserProfileDesignResponse> GetUserProfileDesignAsync(long userId, CancellationToken cancellationToken)
         {
             var combinedSpecification = new UserByIdSpecification(userId)
                 .And(new UserAccessibleSpecification())
                 .And(new UserNotBlockedSpecification())
                 .And(new UserVisibleSpecification());
 
-            var profileDesign = await _repository.AsQueryable()
+            var profileDesign = await _userRepository.AsQueryable()
                   .AsNoTracking()
                   .Where(combinedSpecification)
                   .Select(q => new UserProfileDesignResponse
@@ -152,14 +151,14 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserAvatarResponse"/> с информацией об аватаре пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        public async Task<UserAvatarResponse> GetUserAvatarAsync(int userId, CancellationToken cancellationToken)
+        public async Task<UserAvatarResponse> GetUserAvatarAsync(long userId, CancellationToken cancellationToken)
         {
             var combinedSpecification = new UserByIdSpecification(userId)
                 .And(new UserAccessibleSpecification())
                 .And(new UserNotBlockedSpecification())
                 .And(new UserVisibleSpecification());
 
-            var avatar = await _repository.AsQueryable()
+            var avatar = await _userRepository.AsQueryable()
                   .AsNoTracking()
                   .Where(combinedSpecification)
                   .Select(q => new UserAvatarResponse

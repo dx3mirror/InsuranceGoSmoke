@@ -27,13 +27,6 @@
         public ICollection<AvatarHistory>? AvatarHistories { get; set; }
 
         /// <summary>
-        /// CtorEf
-        /// </summary>
-        public Avatar()
-        {
-            
-        }
-        /// <summary>
         /// Ctor
         /// </summary>
         /// <param name="clientId"></param>

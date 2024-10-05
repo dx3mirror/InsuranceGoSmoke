@@ -57,7 +57,7 @@
         /// Ctor
         /// </summary>
         /// <param name="clientId"></param>
-        public SmokingDescription(Int32 clientId)
+        public SmokingDescription(long clientId)
         {
             ClientId = clientId;
         }

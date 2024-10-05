@@ -17,7 +17,7 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// Объект <see cref="UserMainInformationResponse"/> с основной информацией о пользователе.
         /// </returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        Task<UserMainInformationResponse> GetActiveUsersMainInformationAsync(int userId, CancellationToken cancellationToken);
+        Task<UserMainInformationResponse> GetActiveUsersMainInformationAsync(long userId, CancellationToken cancellationToken);
 
         /// <summary>
         /// Получает настройки конфиденциальности пользователя по его идентификатору.
@@ -26,7 +26,7 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserPrivacySettingsResponse"/> с настройками конфиденциальности пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        Task<UserPrivacySettingsResponse> GetRulePrivacyUserAsync(int userId, CancellationToken cancellationToken);
+        Task<UserPrivacySettingsResponse> GetRulePrivacyUserAsync(long userId, CancellationToken cancellationToken);
 
         /// <summary>
         /// Получает описание пользователя по его идентификатору.
@@ -35,7 +35,7 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserDescriptionResponse"/> с описанием пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        Task<UserDescriptionResponse> GetDescriptionUserAsync(int userId, CancellationToken cancellationToken);
+        Task<UserDescriptionResponse> GetDescriptionUserAsync(long userId, CancellationToken cancellationToken);
 
         /// <summary>
         /// Получает настройки дизайна профиля пользователя по его идентификатору.
@@ -44,7 +44,7 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserProfileDesignResponse"/> с настройками дизайна профиля пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        Task<UserProfileDesignResponse> GetUserProfileDesignAsync(int userId, CancellationToken cancellationToken);
+        Task<UserProfileDesignResponse> GetUserProfileDesignAsync(long userId, CancellationToken cancellationToken);
 
         /// <summary>
         /// Получает аватар пользователя по его идентификатору.
@@ -53,7 +53,6 @@ namespace InsuranceGoSmoke.PersonalAccount.Applications.AppServices.Contexts.Act
         /// <param name="cancellationToken">Токен отмены для асинхронной операции.</param>
         /// <returns>Объект <see cref="UserAvatarResponse"/> с информацией об аватаре пользователя.</returns>
         /// <exception cref="NotFoundException">Выбрасывается, если пользователь не найден.</exception>
-        Task<UserAvatarResponse> GetUserAvatarAsync(int userId, CancellationToken cancellationToken);
+        Task<UserAvatarResponse> GetUserAvatarAsync(long userId, CancellationToken cancellationToken);
     }
-
 }

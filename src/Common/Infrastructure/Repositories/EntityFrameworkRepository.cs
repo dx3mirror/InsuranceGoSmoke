@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
@@ -104,6 +105,24 @@ namespace InsuranceGoSmoke.Common.Infrastructures.DataAccess.Repositories
         private Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
             return DbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
+        {
+            return await DbContext.Database.BeginTransactionAsync(cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public async Task CommitTransactionAsync(IDbContextTransaction transaction, CancellationToken cancellationToken)
+        {
+            await transaction.CommitAsync(cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public async Task RollbackTransactionAsync(IDbContextTransaction transaction, CancellationToken cancellationToken)
+        {
+            await transaction.RollbackAsync(cancellationToken);
         }
     }
 }

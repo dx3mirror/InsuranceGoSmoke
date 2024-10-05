@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq.Expressions;
 
 namespace InsuranceGoSmoke.Common.Infrastructures.DataAccess.Repositories
 {
@@ -56,5 +57,26 @@ namespace InsuranceGoSmoke.Common.Infrastructures.DataAccess.Repositories
         /// <param name="parameters">Параметры.</param>
         /// <param name="cancellationToken">Токен отмены.</param>
         Task ExecuteRawSqlAsync(string sql, IReadOnlyCollection<object> parameters, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Начинает транзакцию.
+        /// </summary>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        /// <returns>Экземпляр транзакции.</returns>
+        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Завершает транзакцию.
+        /// </summary>
+        /// <param name="transaction">Транзакция.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        Task CommitTransactionAsync(IDbContextTransaction transaction, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Откатывает транзакцию.
+        /// </summary>
+        /// <param name="transaction">Транзакция.</param>
+        /// <param name="cancellationToken">Токен отмены.</param>
+        Task RollbackTransactionAsync(IDbContextTransaction transaction, CancellationToken cancellationToken);
     }
 }

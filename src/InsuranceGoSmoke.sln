@@ -79,7 +79,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceGoSmoke.Common.Hos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceGoSmoke.Common.Infrastructures.DataAccess", "Common\Infrastructure\InsuranceGoSmoke.Common.Infrastructures.DataAccess.csproj", "{2D29C0B8-83C6-4DE5-B5E9-C9510335C57E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kortros.Common.Tests", "Common\Tests\Kortros.Common.Tests.csproj", "{CC637C97-11DB-4F52-8564-D7FCA0360A70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuranceGoSmoke.Common.Tests", "Common\Tests\InsuranceGoSmoke.Common.Tests.csproj", "{CC637C97-11DB-4F52-8564-D7FCA0360A70}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{4E9780BB-6F69-4E58-B03E-AE4DC9A8B232}"
 EndProject

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Kortros.Common.Tests</Title>
+    <Title>InsuranceGoSmoke.Common.Tests</Title>
     <PackageDescription>Тесты.</PackageDescription>
     <Description>Тесты.</Description>
     <IsPackable>false</IsPackable>
